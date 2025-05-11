@@ -23,10 +23,12 @@ class MainPage extends StatelessWidget {
           children: <Widget>[
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromARGB(255, 229, 103, 30),
+                backgroundColor: Colors.deepOrangeAccent,
                 foregroundColor: Colors.white,
+                minimumSize: const Size(350, 75),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20)),
+                    side: const BorderSide(color: Colors.red, width: 5),
                 padding: const EdgeInsets.symmetric(
                   horizontal: 30,
                   vertical: 15,
@@ -36,13 +38,17 @@ class MainPage extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, '/mainRepeatPage');
               },
-              child: const Text('Повторение'),
+              child: const Text('Повторение', style: TextStyle( fontFamily: 'Montserrat', fontWeight: FontWeight.w900, fontSize:30)),
             ),
             const SizedBox(height: 20),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.lightGreen,
+                backgroundColor: Colors.deepOrangeAccent,
                 foregroundColor: Colors.white,
+                minimumSize: const Size(350, 75),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20)),
+                    side: const BorderSide(color: Colors.red, width: 5),
                 padding: const EdgeInsets.symmetric(
                   horizontal: 30,
                   vertical: 15,
@@ -52,7 +58,7 @@ class MainPage extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, '/mainRulesPage');
               },
-              child: const Text('Правила'),
+              child: const Text('Правила', style: TextStyle( fontFamily: 'Montserrat', fontWeight: FontWeight.w900, fontSize: 30)),
             ),
           ],
         ),
