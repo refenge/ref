@@ -8,7 +8,8 @@ class MainPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('RUSSIAN FOR EGE', style: const TextStyle(
-          fontSize: 40,
+          fontSize: 38,
+          fontFamily: 'Montserrat',
           letterSpacing: 0.0,
           fontWeight: FontWeight.w900,
           color: Colors.white,

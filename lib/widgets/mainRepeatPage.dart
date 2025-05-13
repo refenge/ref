@@ -1,154 +1,117 @@
+// lib/main_repeat_page.dart
+
 import 'package:flutter/material.dart';
+import 'questionDisplayPage.dart'; // Импорт страницы с вопросами
+import 'data.dart'; // Импорт модели Question
 
 class MainRepeatPage extends StatelessWidget {
-  const MainRepeatPage({super.key});
+  const MainRepeatPage({Key? key}) : super(key: key);
 
+  // Данные заданий
+  static final List<List<Question>> questionSets = [
+    [
+      Question(id: '1', textQuestion: 'A) В каких из приведённых ниже предложений верно передана ГЛАВНАЯ информация, содержащаяся в тексте?\n1. Человек, формируя определённые привычки, создаёт свой характер и сам строит свою судьбу.\n2. Древние говорили, что в основе характера лежит привычка, а характер лежит в основе судьбы.\n3. Судьба человека зависит от его привычек и характера, и сам человек определяет, какой она будет.\n4. Во фразах древних всегда заложен глубокий смысл, и эта пословица не исключение.\n5. Состояние организма, здоровье человека, его работоспособность зависят от мелочей.\n (1)«Посеешь поступок — пожнёшь привычку; посеешь привычку — пожнёшь характер; посеешь характер — пожнёшь судьбу». (2) Так говорили древние, и в этой фразе заложен глубокий смысл. (3) ______ состояние организма, здоровье человека, его работоспособность, а в конечном счёте и судьба зависят от множества мелочей, которые окружают нас дома и на работе, в семье и в производственном коллективе.\n',  answer: '25'),
+      Question(id: '2', textQuestion: 'B) В каких из приведённых ниже предложений верно передана ГЛАВНАЯ информация, содержащаяся в тексте?\n1. Былины содержат не только вымысел, но и некоторые исторические факты, описывают реальные события в сказочной форме.\n2. Иллюстраторы былин должны знать исторические реалии и достоверно их изображать, поскольку в былинах описываются реальные события.\n3. Трудности, с которыми сталкиваются художники, иллюстрирующие былины, связаны с незнанием реалий быта того времени.\n4. Иллюстраторы былин сталкиваются с определёнными трудностями.\n5. Художники, иллюстрирующие былины, должны учитывать описываемые в них реальные события, предметы быта, костюмы и оружие того времени и достоверно их изображать.\n (1)Художники, иллюстрирующие былины, сталкиваются с определёнными трудностями. (2)Им необходимо учитывать, что былина содержит не только вымысел, но и некоторые исторические факты, даже, можно сказать, описывает реальные события в сказочной форме. (3) _____ иллюстраторы должны знать, как выглядели предметы быта, костюмы и оружие того времени, и достоверно их изобразить. \n', answer: '25'),
+      Question(id: 'Z', textQuestion: 'C) В каких из приведённых ниже предложений верно передана ГЛАВНАЯ информация, содержащаяся в тексте?\n1. Люди редко украшают свои жилища картинами, рассказывающими о великих событиях прошлого или обыденной жизни незнакомых людей.\n2. Пейзаж можно назвать самым популярным жанром искусства, так как только пейзажные полотна позволяют по-настоящему отдыхать душой. \n3. Пейзаж можно назвать едва ли не самым популярным жанром искусства.\n4. Человеку всегда интересно рассматривать сюжетные картины, переживать за героев произведения.\n5. Самым популярным жанром искусства можно назвать пейзаж, поскольку только картины живой природы позволяют отдыхать душой.\n (1)Среди многочисленных жанров искусства пейзаж можно назвать едва ли не самым популярным. (2) ____ всегда интересно рассматривать сюжетные картины, переживая за героев произведения, но когда мы смотрим на полотна, запечатлевшие красоту живой природы, мы по-настоящему отдыхаем душой. (3)Заметьте: украшая своё жилище, редкий человек повесит на стену произведение, рассказывающее о великих событиях прошлого или обыденной жизни незнакомых людей. \n', answer: '35'), // Добавил для примера
+    ],
+    [
+      Question(id: '3', textQuestion: 'A) Укажите варианты ответов, в которых верно выделена буква, обозначающая ударный гласный звук. Запишите номера ответов.\n1) дешевИзна\n2) ерЕтик\n3) черпАть\n4) дОсуха\n5) мозАичный', answer: '14'),
+      Question(id: '4', textQuestion: 'B) Укажите варианты ответов, в которых верно выделена буква, обозначающая ударный гласный звук. Запишите номера ответов.\n1) жАлюзи\n2) закУпорить\n3) дОнельзя\n4) бОроду\n5) кашлянУть', answer: '25'),
+      Question(id: '5', textQuestion: 'C) Укажите варианты ответов, в которых верно выделена буква, обозначающая ударный гласный звук. Запишите номера ответов.\n1) звонИт\n2) квАртал\n3) мозаИчный\n4) тУфля\n5) пломбИровать', answer: '134'),
+      Question(id: '6', textQuestion: 'D) Укажите варианты ответов, в которых верно выделена буква, обозначающая ударный гласный звук. Запишите номера ответов.\n1) кОрмящий\n2) нАчавшись\n3) зАтемно\n4) водопровОд\n5) отрОчество', answer: '34'),
+      Question(id: '7', textQuestion: 'E) Укажите варианты ответов, в которых верно выделена буква, обозначающая ударный гласный звук. Запишите номера ответов.\n1) кровотОчить\n2) зАгнутый\n3) пОдняв\n4) зАсветло\n5) ерЕтик', answer: '24')
+    ],
+    [
+      Question(id: '8', textQuestion: 'A) Певец, с которым мы познакомились во время поездки, пришёл на собрание писателей и подарил нам бесплатно несколько своих пластинок.', answer: 'бесплатно'),
+      Question(id: '9', textQuestion: 'B) Коренные аборигены Америки живут в суровых условиях.', answer: 'коренные'),
+      Question(id: '10', textQuestion: 'C) Благодаря героическим усилиям небольшой группы наших пехотинцев и миномётчиков ответная контратака противника была отбита.', answer: 'ответная')
+    ],
+    [
+      Question(id: '11', textQuestion: 'A) Укажите варианты ответов, в которых во всех словах одного ряда пропущена одна и та же буква. Запишите номера ответов.\n1) ув..дание (цветов), землетр..сение, об..зательно\n2) исп..лнение, в..рсистый, прекл..нение\n3) тр..нажёр, ед..номышленник, пот..рять\n4) ст..листический, зан..маться, ч..стоплотный\n5) г..роизм, зап..вал (водой), л..бединый', answer: '124'),
+      Question(id: '12', textQuestion: 'B) Укажите варианты ответов, в которых во всех словах одного ряда пропущена одна и та же буква. Запишите номера ответов.\n\n1) утр..мбовать, возг..рание, неприк..сновенность\n2) заг..релый, водор..сли, пом..гать\n3) подж..гатель, пр..оритетный, щ..бетать\n4) опр..вдать, пог..сить, л..зурь\n5) впеч..тление, в..рхушка, сбл..жаясь', answer: '24'),
+      Question(id: '13', textQuestion: 'C) Укажите варианты ответов, в которых во всех словах одного ряда пропущена одна и та же буква. Запишите номера ответов.\n\n1) г..потеза, изб..рательная, заст..лая\n2) не..хотно, выр..зительный, покл..ниться\n3) оч..рстветь, д..шевизна, комп..тентный\n4) прик..сновение, разд..вить, з..ря\n5) изл..жение, д..кумент, ук..ротить', answer: '135'),
+      Question(id: '14', textQuestion: 'D) Укажите варианты ответов, в которых во всех словах одного ряда пропущена одна и та же буква. Запишите номера ответов.\n\n1) д..рижировать, тр..петать, вбл..зи\n2) безотл..гательный, д..лёкая, пов..р\n3) сист..матизация, сх..матический, зат..мнённый\n4) к..мпонент, предл..гается, ум..лчать\n5) обн..вленный, сост..вление, ф..рмулировка', answer: '23'),
+      Question(id: '15', textQuestion: 'E) Укажите варианты ответов, в которых во всех словах одного ряда пропущена одна и та же буква. Запишите номера ответов.\n\n1) в..новатый, проб..раться, дисципл..нировать\n2) отл..чительный, комп..тентность, р..шить\n3) уд..вольствие, к..ммуникабельный, альм..нах\n4) ор..гинальный, раст..рать, бл..стеть\n5) акв..рельный, под..вая, сл..гаемое', answer: '15')
+    ],
+    [
+      Question(id: '16', textQuestion: 'A) Укажите варианты ответов, в которых во всех словах одного ряда пропущена одна и та же буква. Запишите номера ответов.\n1.пре..писание, на..кусить, по..править\n2.бе..компромиссный, во..росший, не..держанный\n3.пр..брежный, пр..терпеться (к боли), пр..уныть\n4.под ..брать, нез..вершённая (работа), п..немногу\n5.в..юнок, меж..ярусный, ад..ютант', answer: '13'),
+      Question(id: '17', textQuestion: 'B) Укажите варианты ответов, в которых во всех словах одного ряда пропущена одна и та же буква. Запишите номера ответов.\n1.на..пиливать, о..бросить, по..задорить\n2.и..порченный, бе..перспективный, ра..шевелить\n3.пр..образование, пр..мудрый, пр..обладать\n4.небез..звестный, от..скать, сверх..зысканный\n5.раз..ехались, вороб..иный, увеч..е', answer: '23'),
+      Question(id: '18', textQuestion: 'C) Укажите варианты ответов, в которых во всех словах одного ряда пропущена одна и та же буква. Запишите номера ответов.\n1.беспр..станный, пр..следовать, пр..вращение\n2.бе..конечный, и..подтишка, ра..жалобить\n3.пр..творить (в жизнь) , пр..секать, пр..клонение\n4.о..гадать, о..биться, пре..писанный\n5.об..скать, дез..нфекция, без..скусный', answer: '13')
+    ],
+    [
+      Question(id: '19', textQuestion: 'A) Укажите варианты ответов, в которых в обоих словах одного ряда пропущена одна и та же буква. Запишите номера ответов.\n\n1. ноч..вка, реш..нный\n2. кресл..це, мудр..цы\n3. насмешл..вый, милост..вый\n4. эмал..вый, наста..вал\n5. одол..вать, стар..нький', answer: '135'),
+      Question(id: '20', textQuestion: 'B) Укажите варианты ответов, в которых в обоих словах одного ряда пропущена одна и та же буква. Запишите номера ответов. \n\n1. плутони..вый, форел..вый \n2. выздоравл..вать, овлад..вать \n3. весел..нький, приколоч..нный \n4. трущ..ба, туш..нка \n5. ключ..к, замоч..к', answer: '13'),
+      Question(id: '21', textQuestion: 'C) Укажите варианты ответов, в которых в обоих словах одного ряда пропущена одна и та же буква. Запишите номера ответов. \n\n1. буш..вать, голуб..нький \n2. яблон..вый, прожорл..вый \n3. мешоч..к, ружь..цо \n4. глуб..на, старш..нство \n5. фламанд..кий, тка..кий', answer: '134')
+    ]
+  ];
+
+  final List<int> customTaskNumbers = const [1, 4, 6, 9, 10, 11];
+    //Каст.номера заданий
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-        title: const Text('RUSSIAN FOR EGE', style: const TextStyle(
-        fontSize: 37,
-        letterSpacing: 0.0,
-        fontWeight: FontWeight.w900,
-        color: Colors.white,
-    ),),
-    centerTitle: true,
-    backgroundColor: Colors.red,
+    // Убедимся, что количество наборов вопросов совпадает с количеством кастомных номеров
+    // Это важно для предотвращения ошибок выхода за пределы массива
+    assert(questionSets.length == customTaskNumbers.length,
+    'Количество наборов вопросов должно совпадать с количеством кастомных номеров заданий.');
 
-    ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              ElevatedButton(
-                onPressed: () {
-                  // Заглушка уведомления
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('Кнопка нажата!'),
-                    ),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepOrangeAccent,
-                  foregroundColor: Colors.white,
-                  minimumSize: const Size(350, 65),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20), // Скругление
-                    side: const BorderSide(color: Colors.red, width: 5), // Обводка
-                  ),
-                  padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15), // Padding
-                ),
-                child: Text('Задание №1', style: TextStyle( fontFamily: 'Montserrat', fontWeight: FontWeight.w800, fontSize: 25)),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  // Заглушка уведомления
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('Кнопка нажата!'),
-                    ),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepOrangeAccent,
-                  foregroundColor: Colors.white,
-                  minimumSize: const Size(350, 65),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20), // Скругление
-                    side: const BorderSide(color: Colors.red, width: 5), // Обводка
-                  ),
-                  padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15), // Padding
-                ),
-                child: Text('Задание №4', style: TextStyle( fontFamily: 'Montserrat', fontWeight: FontWeight.w800, fontSize: 25)),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  // Заглушка уведомления
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('Кнопка нажата!'),
-                    ),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepOrangeAccent,
-                  foregroundColor: Colors.white,
-                  minimumSize: const Size(350, 65),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20), // Скругление
-                    side: const BorderSide(color: Colors.red, width: 5), // Обводка
-                  ),
-                  padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15), // Padding
-                ),
-                child: Text('Задание №6', style: TextStyle( fontFamily: 'Montserrat', fontWeight: FontWeight.w800, fontSize: 25)),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  // Заглушка уведомления
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('Кнопка нажата!'),
-                    ),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepOrangeAccent,
-                  foregroundColor: Colors.white,
-                  minimumSize: const Size(350, 65),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20), // Скругление
-                    side: const BorderSide(color: Colors.red, width: 5), // Обводка
-                  ),
-                  padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15), // Padding
-                ),
-                child: Text('Задание №9', style: TextStyle( fontFamily: 'Montserrat', fontWeight: FontWeight.w800, fontSize: 25)),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  // Заглушка уведомления
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('Кнопка нажата!'),
-                    ),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepOrangeAccent,
-                  foregroundColor: Colors.white,
-                  minimumSize: const Size(350, 65),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20), // Скругление
-                    side: const BorderSide(color: Colors.red, width: 5), // Обводка
-                  ),
-                  padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15), // Padding
-                ),
-                child: Text('Задание №10', style: TextStyle( fontFamily: 'Montserrat', fontWeight: FontWeight.w800, fontSize: 25)),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  // Заглушка уведомления
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('Кнопка нажата!'),
-                    ),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepOrangeAccent,
-                  foregroundColor: Colors.white,
-                  minimumSize: const Size(350, 65),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20), // Скругление
-                    side: const BorderSide(color: Colors.red, width: 5), // Обводка
-                  ),
-                  padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15), // Padding
-                ),
-                child: Text('Задание №11', style: TextStyle( fontFamily: 'Montserrat', fontWeight: FontWeight.w800, fontSize: 25)),
-              ),
-            ]
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'RUSSIAN FOR EGE',
+          style: TextStyle(
+            fontSize: 33,
+            fontFamily: 'Montserrat',
+            fontWeight: FontWeight.w900,
+            color: Colors.white,
+          ),
         ),
+        centerTitle: true,
+        backgroundColor: Colors.red,
+        iconTheme: const IconThemeData(
+          color: Colors.white,
+        ),
+      ),
+      body: ListView.separated(
+        padding: const EdgeInsets.all(16.0),
+        // Используем длину списка кастомных номеров (или questionSets.length, они должны совпадать)
+        itemCount: customTaskNumbers.length,
+        itemBuilder: (context, index) {
+          // Получаем кастомный номер задания
+          int taskNumber = customTaskNumbers[index];
+
+          return ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => QuestionDisplayPage(
+                    questions: questionSets[index], // Передаем соответствующий набор вопросов
+                    pageTitle: 'Задание №$taskNumber', // Используем кастомный номер
+                  ),
+                ),
+              );
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.deepOrangeAccent,
+              foregroundColor: Colors.white,
+              minimumSize: const Size(double.infinity, 65),
+              padding: const EdgeInsets.symmetric(vertical: 12),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+                side: const BorderSide(color: Colors.red, width: 5),
+              ),
+              elevation: 3,
+            ),
+            child: Text(
+              'Задание №$taskNumber', // Используем кастомный номер
+              style: const TextStyle(
+                  fontFamily: 'Montserrat',
+                  fontWeight: FontWeight.w800,
+                  fontSize: 25),
+            ),
+          );
+        },
+        separatorBuilder: (context, index) => const SizedBox(height: 10),
       ),
     );
   }

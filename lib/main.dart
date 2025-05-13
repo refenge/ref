@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/',
       routes: {
-        '/mainRepeatPage': (context) => const MainRepeatPage(),
+        '/mainRepeatPage': (context) => MainRepeatPage(),
         '/mainRulesPage': (context) => const MainRulesPage(),
       },
       debugShowCheckedModeBanner: false,
